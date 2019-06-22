@@ -1,5 +1,7 @@
 # crmvue
 
+Node.js version --> 11.5.0 (npm v6.4.1)
+
 ## Project setup
 ```
 npm install

@@ -1,5 +1,5 @@
 <template>
-  <ul class="sidenav app-sidenav open">
+  <ul class="sidenav app-sidenav" :class="{open: value}">
     <router-link
         tag="li"
         active-class="active"
@@ -39,7 +39,8 @@ export default {
         url: '/categories'
       },
     ]    
-  })
+  }),
+  props: ['value']
 }
 </script>
 

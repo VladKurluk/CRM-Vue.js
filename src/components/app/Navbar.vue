@@ -5,7 +5,7 @@
         <a href="#" @click.prevent="$emit('toggleNav')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">{{ date }}</span>
+        <span class="black-text">{{ date | date('datetime') }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -58,7 +58,7 @@ export default {
     if (this.dropdown && this.dropdown.destroy) {
       this.dropdown.destroy()
     }
-    
+
     clearInterval(this.interval)
   }
 }

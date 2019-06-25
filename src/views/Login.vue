@@ -53,8 +53,8 @@ export default {
     password: ''
   }),
   validations: {
-    email: {email, required},
-    password: {required, minLength: minLength(6)}
+    email: { email, required },
+    password: { required, minLength: minLength(6) }
   },
   methods: {
     submitHandler () {

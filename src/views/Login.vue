@@ -58,7 +58,7 @@ export default {
     password: { required, minLength: minLength(6) }
   },
   methods: {
-    submitHandler () {
+    async submitHandler () {
       if (this.$v.$invalid) {
         this.$v.$touch()
         return
@@ -68,6 +68,13 @@ export default {
         email: this.email,
         password: this.password
       }
+
+      try {
+        await this.$store.dispatch('login', formData)
+        this.$router.push('/')
+      } catch (e) {
+
+      }      
     }
   },
   mounted () {

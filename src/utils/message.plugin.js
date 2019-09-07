@@ -5,7 +5,7 @@ export default {
     }
 
     Vue.prototype.$error = function (text) {
-      M.toast({ html: `[Ошибка]: ${text}` })
+      M.toast({ html: `Ошибка: ${text}` })
     }
   }
 }

@@ -3,9 +3,8 @@
     <div class="app-main-layout">
 
       <Navbar @toggleNav="isOpen = !isOpen" />
-      
+
       <Sidebar v-model="isOpen" />
-      
 
       <main class="app-content" :class="{full: !isOpen}">
         <div class="app-page">
@@ -34,7 +33,11 @@ export default {
   components: {
     Navbar,
     Sidebar
+  },
+  mounted () {
+    if () {
+      await 
+    }
   }
 }
 </script>
-

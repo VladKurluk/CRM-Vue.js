@@ -34,9 +34,9 @@ export default {
     Navbar,
     Sidebar
   },
-  mounted () {
-    if () {
-      await 
+  async mounted () {
+    if (!Object.keys(this.$store.getters.info).length) {
+      await this.$store.dispatch('fetchInfo')
     }
   }
 }

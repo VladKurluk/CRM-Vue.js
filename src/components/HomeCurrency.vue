@@ -9,16 +9,18 @@
           <thead>
             <tr>
               <th>Валюта</th>
-              <th>Курс</th>
-              <th>Дата</th>
+              <th>Курс покупки</th>
+              <th>Курс продажи</th>
+              <th>Время</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td>руб</td>
-              <td>12121</td>
-              <td>12.12.12</td>
+            <tr v-for="(rate, index) in rates" :key="index">
+              <td>{{rate.ccy}}</td>
+              <td>{{rate.buy}}</td>
+              <td>{{rate.sale}}</td>
+              <td>{{ date | date('time') }}</td>
             </tr>
           </tbody>
         </table>
@@ -26,3 +28,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Currency',
+  props: ['rates'],
+  data: () => ({
+    date: new Date()
+  })
+}
+</script>

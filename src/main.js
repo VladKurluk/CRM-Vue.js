@@ -9,6 +9,7 @@ import 'firebase/auth'
 import 'firebase/database'
 import dateFilter from '@/filters/date.filter'
 import messagePlugin from '@/utils/message.plugin'
+import Loader from '@/components/app/Loader'
 import firebaseConfig from '@/utils/firebase.config'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 Vue.filter('date', dateFilter)
+Vue.component('Loader', Loader)
 
 firebase.initializeApp(firebaseConfig)
 

@@ -2,13 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
 import info from './info'
+import category from './category'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     auth,
-    info
+    info,
+    category
   },
   state: {
     error: null
@@ -27,7 +29,7 @@ export default new Vuex.Store({
   actions: {
     async fetchCurrency () {
       const res = await fetch('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
-      return await res.json()
+      return res.json()
     }
   }
 })  

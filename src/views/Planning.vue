@@ -13,12 +13,13 @@
       <div
         v-for="cat in categories"
         :key="cat.id"
+        v-tooltip="cat.tooltip"
       >
         <p>
           <strong>{{ cat.title }}:</strong>
           {{cat.spend}} из {{cat.limit}}
         </p>
-        <div class="progress" >
+        <div class="progress">
           <div
               class="determinate"
               :class="[cat.progressColor]"
@@ -63,13 +64,16 @@ export default {
       const percent = 100 * spend / cat.limit
       const progressPercent = percent > 100 ? 100 : percent
       const progressColor = percent < 60 ? 'green' : percent < 100 ? 'yellow' : 'red'
+      const tooltipValue = cat.limit - spend
+      const tooltip = `${ tooltipValue < 0 ? 'Превышение лимита на:' : 'Осталось:'} ${Math.abs(tooltipValue)}`
 
       return {
         ...cat,
         percent,
         progressPercent,
         progressColor,
-        spend
+        spend,
+        tooltip
       }
     })
     this.loading = false

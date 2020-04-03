@@ -15,7 +15,7 @@
       <tr v-for="(record, index) in records" :key="record.id">
         <td>{{ index + 1 }}</td>
         <td>{{ record.amount }}</td>
-        <td>{{ record.date }}</td>
+        <td>{{ record.date | date('datetime')}}</td>
         <td>{{ record.categoryName }}</td>
         <td>
           <span

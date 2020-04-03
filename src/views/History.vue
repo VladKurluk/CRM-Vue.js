@@ -5,7 +5,7 @@
     </div>
 
     <div class="history-chart">
-      <canvas></canvas>
+      <canvas ref="canvas"></canvas>
     </div>
 
     <loader v-if='loading'/>
@@ -21,9 +21,11 @@
 <script>
 import Loader from '@/components/app/Loader'
 import HistoryTable from '@/components/HistoryTable'
+import { Pie } from 'vue-chartjs'
 
 export default {
   name: 'history',
+  extends: Pie,
   components: {
     HistoryTable,
     Loader
@@ -33,6 +35,20 @@ export default {
     records: [],
     categories: []
   }),
+  methods: {
+    setup () {
+      this.renderChart({
+        labels: ['red'],
+        datasets: [{
+          barPercentage: 0.5,
+          barThickness: 6,
+          maxBarThickness: 8,
+          minBarLength: 2,
+          data: [10, 20, 30, 40, 50, 60, 70]
+        }]
+      })
+    }
+  },
   async mounted () {
     // this.records = await this.$store.dispatch('fetchRecords')
     this.categories = await this.$store.dispatch('fetchCategories')
@@ -45,6 +61,7 @@ export default {
         typeText: record.type === 'income' ? 'Доход' : 'Расход'
       }
     })
+    this.setup()
     this.loading = false
   }
 }

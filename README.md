@@ -1,6 +1,13 @@
 # crmvue
 
-Node.js version --> 11.5.0 (npm v6.4.1)
+```
+nvm use lts/dubnium
+```
+
+| Name | Stable Version |
+| ------ | ------ |
+| Node | v10.18.1 |
+| npm | 6.13.4 |
 
 ## Project setup
 ```
@@ -26,6 +33,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

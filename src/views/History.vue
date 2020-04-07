@@ -31,12 +31,12 @@
 import paginationMixin from '@/mixins/pagination.mixin'
 import Loader from '@/components/app/Loader'
 import HistoryTable from '@/components/HistoryTable'
-import { Pie } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 
 export default {
   name: 'history',
   mixins: [paginationMixin],
-  extends: Pie,
+  extends: Line,
   components: {
     HistoryTable,
     Loader
@@ -46,31 +46,45 @@ export default {
     records: []
   }),
   methods: {
-    setup () {
+    setup (categories) {
+      console.log(categories, this.records)
+      this.setupPagination(this.records.map(record => {
+        return {
+          ...record,
+          categoryName: categories.find(c => c.id === record.categoryId).title,
+          typeClass: record.type === 'income' ? 'green' : 'red',
+          typeText: record.type === 'income' ? 'Доход' : 'Расход'
+        }
+      }))
       this.renderChart({
-        labels: ['red'],
-        datasets: [{
-          barPercentage: 0.5,
-          barThickness: 6,
-          maxBarThickness: 8,
-          minBarLength: 2,
-          data: [10, 20, 30, 40, 50, 60, 70]
-        }]
+        labels: this.records.map(c => c.date),
+        datasets: categories.map(cat => {
+          return {
+            label: cat.title,
+            backgroundColor: '#f87979',
+            borderColor: '#f87979',
+            borderCapStyle: 'round',
+            pointBorderColor: 'orange',
+            pointBackgroundColor: 'rgba(255,150,0,0.5)',
+            borderWidth: 3,
+            showLine: true,
+            spanGaps: true,
+            lineStyle: 'solid',
+            width: 2,
+            data: this.records.map(r => {
+              if (r.categoryId === cat.id && r.type === 'outcome') {
+                return r.amount
+              }
+            })
+          }
+        })
       })
     }
   },
   async mounted () {
     this.records = await this.$store.dispatch('fetchRecords')
     const categories = await this.$store.dispatch('fetchCategories')
-    this.setupPagination(this.records.map(record => {
-      return {
-        ...record,
-        categoryName: categories.find(c => c.id === record.categoryId).title,
-        typeClass: record.type === 'income' ? 'green' : 'red',
-        typeText: record.type === 'income' ? 'Доход' : 'Расход'
-      }
-    }))
-    this.setup()
+    this.setup(categories)
     this.loading = false
   }
 }

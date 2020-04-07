@@ -11,6 +11,7 @@ import dateFilter from '@/filters/date.filter'
 import messagePlugin from '@/utils/message.plugin'
 import tooltipDirective from '@/directives/tooltip.directive'
 import Loader from '@/components/app/Loader'
+import Paginate from 'vuejs-paginate'
 import firebaseConfig from '@/utils/firebase.config'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
@@ -22,6 +23,7 @@ Vue.use(messagePlugin)
 Vue.filter('date', dateFilter)
 Vue.directive('tooltip', tooltipDirective)
 Vue.component('Loader', Loader)
+Vue.component('paginate', Paginate)
 
 firebase.initializeApp(firebaseConfig)
 

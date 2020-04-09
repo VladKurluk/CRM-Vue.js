@@ -63,7 +63,7 @@ export default {
         this.$v.$touch()
         return
       }
-      
+
       const formData = {
         email: this.email,
         password: this.password
@@ -74,7 +74,7 @@ export default {
         this.$router.push('/')
       } catch (e) {
 
-      }      
+      } 
     }
   },
   mounted () {

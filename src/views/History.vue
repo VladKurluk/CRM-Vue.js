@@ -47,7 +47,6 @@ export default {
   }),
   methods: {
     setup (categories) {
-      console.log(categories, this.records)
       this.setupPagination(this.records.map(record => {
         return {
           ...record,

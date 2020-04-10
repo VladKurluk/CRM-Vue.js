@@ -8,6 +8,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 import dateFilter from '@/filters/date.filter'
+import localizeFilter from '@/filters/localize.filter'
 import messagePlugin from '@/utils/message.plugin'
 import tooltipDirective from '@/directives/tooltip.directive'
 import Loader from '@/components/app/Loader'
@@ -21,6 +22,7 @@ Vue.config.productionTip = false
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 Vue.filter('date', dateFilter)
+Vue.filter('localize', localizeFilter)
 Vue.directive('tooltip', tooltipDirective)
 Vue.component('Loader', Loader)
 Vue.component('paginate', Paginate)

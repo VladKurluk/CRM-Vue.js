@@ -8,7 +8,7 @@
         v-for="(link, index) in links"
         :key="index"
     >
-      <a href="" class="waves-effect waves-orange pointer">{{ link.title }}</a>
+      <a href="" class="waves-effect waves-orange pointer">{{ link.title | localize}}</a>
     </router-link>
   </ul>
 </template>
@@ -18,27 +18,27 @@ export default {
   data: () => ({
     links: [
       {
-        title: 'Счет',
+        title: 'Menu_Bill',
         url: '/',
         exact: true
       },
       {
-        title: 'История',
+        title: 'Menu_History',
         url: '/history'
       },
       {
-        title: 'Планирование',
+        title: 'Menu_Planning',
         url: '/planning'
       },
       {
-        title: 'Новая запись',
+        title: 'Menu_NewRecord',
         url: '/record'
       },
       {
-        title: 'Категории',
+        title: 'Menu_Categories',
         url: '/categories'
-      },
-    ]    
+      }
+    ]
   }),
   props: ['value']
 }

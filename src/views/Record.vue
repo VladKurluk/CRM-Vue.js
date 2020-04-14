@@ -98,6 +98,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'record',
+  metaInfo () {
+    return {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: this.$title('Menu_NewRecord')
+    }
+  },
   components: {
     Loader
   },

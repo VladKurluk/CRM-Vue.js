@@ -38,6 +38,12 @@ import { required } from 'vuelidate/lib/validators'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'profile',
+  metaInfo () {
+    return {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: this.$title('ProfileTitle')
+    }
+  },
   data: () => ({
     name: '',
     isRuLocale: true

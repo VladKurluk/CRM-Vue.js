@@ -37,6 +37,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Planing',
+  metaInfo () {
+    return {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: this.$title('Menu_Planning')
+    }
+  },
   components: {
     Loader
   },

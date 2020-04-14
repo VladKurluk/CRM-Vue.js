@@ -23,6 +23,12 @@ import Currency from '@/components/HomeCurrency.vue'
 
 export default {
   name: 'home',
+  metaInfo () {
+    return {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: this.$title('Menu_Bill')
+    }
+  },
   components: {
     Billing,
     Currency

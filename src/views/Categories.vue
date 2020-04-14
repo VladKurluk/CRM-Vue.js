@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{'Menu_Categories' | localize}}</h3>
     </div>
     <section>
       <loader v-if='loading'/>
@@ -26,6 +26,12 @@ import Loader from '@/components/app/Loader'
 
 export default {
   name: 'categories',
+  metaInfo () {
+    return {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: this.$title('Menu_Categories')
+    }
+  },
   data: () => ({
     categories: [],
     loading: true,
